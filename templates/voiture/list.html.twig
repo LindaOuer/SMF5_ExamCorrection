@@ -1,0 +1,34 @@
+<table border="1">
+	<tr>
+		<td>Id</td>
+		<td>Marque</td>
+		<td>Date Debut</td>
+		<td>Date Fin</td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+
+	{% for v in voitures %}
+		<tr>
+			<td>{{ v.id }}</td>
+			<td>{{ v.marque }}</td>
+			<td>{{ v.dateDebut|date('m/d/Y') }}</td>
+			<td>{{ v.dateFin|date('m/d/Y') }}</td>
+			<td>
+				<a href="{{ path('delete_voiture', {id: v.id}) }}">Delete</a>
+			</td>
+			<td>
+				<a href="{{ path('louer_voiture', {id: v.id}) }}">Louer</a>
+			</td>
+			<td>
+				<a href="{{ path('nombre_voiture', {id: v.id}) }}">Nombre</a>
+			</td>
+		</tr>
+	{% endfor %}
+
+</table>
+
+{% if nb is defined %}
+    Le nombre de voiture de la marque {{ marque }} est {{ nb }}.
+{% endif %}
